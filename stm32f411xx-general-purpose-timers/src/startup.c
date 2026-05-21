@@ -1,5 +1,6 @@
 /* STM32F411xx */
 #include "startup.h"
+#include "sysinit.h"
 
 
 __attribute__((naked, noreturn))
@@ -20,6 +21,7 @@ void reset_handler(void)
     ++bss;
   }
 
+  sysinit();
   (void)main();
 
   while (1);

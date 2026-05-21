@@ -1,11 +1,11 @@
 #include "timer.h"
 
-void tim_stk_init(stk_t *systim, uint32_t ticks)
-{
-  systim->rvr = ticks - 1;
-  systim->cvr = 0;
-  systim->csr |= 0x7;
-}
+#define TIMx_CR1_CEN            (1ul)
+#define TIMx_CR1_ARPE           (1ul << 7)
+
+#define TIMx_EGR_UG             (1ul)
+
+
 
 void tim_pwm_init(tim_t t, tim_pwm_cfg_t cfg)
 {
@@ -16,7 +16,7 @@ void tim_pwm_init(tim_t t, tim_pwm_cfg_t cfg)
     uint32_t shift;
 
     /* Enable ARR preload */
-    tim->cr1 |= (1ul << 7);
+    tim->cr1 |= TIMx_CR1_ARPE;
 
     if (ch < 2) {
       ccmr = &tim->ccmr1;
@@ -51,9 +51,9 @@ void tim_pwm_init(tim_t t, tim_pwm_cfg_t cfg)
     tim->ccer |= (1ul << (ch * 4));
 
     /* Update registers */
-    tim->egr = 1ul;
+    tim->egr = TIMx_EGR_UG;
     /* Enable counter */
-    tim->cr1 |= 1ul;
+    tim->cr1 |= TIMx_CR1_CEN;
 }
 
 void tim_pwm_write(tim_t t, tim_ch_t ch, uint32_t duty_cycle)

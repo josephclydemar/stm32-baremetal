@@ -2,10 +2,10 @@
 #define TIMER_H_
 #include "stm32f411xx.h"
 
-#define TIM2 (tim_t){ .inst = (gptim_t *)TIM2_START }
-#define TIM3 (tim_t){ .inst = (gptim_t *)TIM3_START }
-#define TIM4 (tim_t){ .inst = (gptim_t *)TIM4_START }
-#define TIM5 (tim_t){ .inst = (gptim_t *)TIM5_START }
+#define TIM2 (tim_t){ .inst = (gptim_t *)TIM2_ADDR }
+#define TIM3 (tim_t){ .inst = (gptim_t *)TIM3_ADDR }
+#define TIM4 (tim_t){ .inst = (gptim_t *)TIM4_ADDR }
+#define TIM5 (tim_t){ .inst = (gptim_t *)TIM5_ADDR }
 
 typedef enum {
   TIMER_CH1 = 0,

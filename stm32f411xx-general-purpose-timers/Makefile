@@ -1,7 +1,5 @@
 CC = arm-none-eabi-gcc
-CFLAGS = -std=c11 -ffreestanding \
-				 -Wall -Wextra -Werror -Wundef -Wshadow -Wdouble-promotion \
-				 -mcpu=cortex-m4 -mthumb -mfpu=fpv4-sp-d16 -mfloat-abi=hard
+CFLAGS = -std=c11 -ffreestanding -Wall -Wextra -Werror -Wundef -Wshadow -Wdouble-promotion -mcpu=cortex-m4 -mthumb -mfpu=fpv4-sp-d16 -mfloat-abi=hard
 LFLAGS = -nostdlib -T linker.ld
 INCLUDES = -I include
 

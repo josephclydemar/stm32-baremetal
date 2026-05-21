@@ -2,12 +2,12 @@
 #define GPIO_H_
 #include "stm32f411xx.h"
 
-#define PA5 (volatile gpio_pin_t){ .port = ((volatile gpio_t *)GPIOA_START), .pin = 5 }
-#define PA6 (volatile gpio_pin_t){ .port = ((volatile gpio_t *)GPIOA_START), .pin = 6 }
-#define PA7 (volatile gpio_pin_t){ .port = ((volatile gpio_t *)GPIOA_START), .pin = 7 }
-#define PB3 (volatile gpio_pin_t){ .port = ((volatile gpio_t *)GPIOB_START), .pin = 3 }
-#define PB5 (volatile gpio_pin_t){ .port = ((volatile gpio_t *)GPIOB_START), .pin = 5 }
-#define PB6 (volatile gpio_pin_t){ .port = ((volatile gpio_t *)GPIOB_START), .pin = 6 }
+#define PA5 (volatile gpio_pin_t){ .port = ((volatile gpio_t *)GPIOA_ADDR), .pin = 5 }
+#define PA6 (volatile gpio_pin_t){ .port = ((volatile gpio_t *)GPIOA_ADDR), .pin = 6 }
+#define PA7 (volatile gpio_pin_t){ .port = ((volatile gpio_t *)GPIOA_ADDR), .pin = 7 }
+#define PB3 (volatile gpio_pin_t){ .port = ((volatile gpio_t *)GPIOB_ADDR), .pin = 3 }
+#define PB5 (volatile gpio_pin_t){ .port = ((volatile gpio_t *)GPIOB_ADDR), .pin = 5 }
+#define PB6 (volatile gpio_pin_t){ .port = ((volatile gpio_t *)GPIOB_ADDR), .pin = 6 }
 
 #define GPIO_OUTPUT_LOW_SPEED        0x0
 #define GPIO_OUTPUT_MEDIUM_SPEED     0x1
