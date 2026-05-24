@@ -21,6 +21,7 @@ probe:
 	st-info --probe
 
 flash:
+	@echo -n $$(($$(cat ../.flashcount) - 1)) > ../.flashcount
 	$(ST) --reset write $(TARGET_BIN) $(FLASH_START_ADDR)
 
 erase:

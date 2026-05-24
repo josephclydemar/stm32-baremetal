@@ -17,16 +17,11 @@ all: $(TARGET_BIN) $(TARGET_IHEX)
 clean:
 	$(RM) $(wildcard build/*)
 
-iprobe:
+probe:
 	st-info --probe
 
-iflash:
-	st-info --flash
-
-isram:
-	st-info --sram
-
 flash:
+	@echo -n $$(($$(cat ../.flashcount) - 1)) > ../.flashcount
 	$(FLASHER) --reset write $(TARGET_BIN) $(FLASH_FLASHERART_ADDR)
 
 erase:

@@ -42,7 +42,7 @@ int main(void)
     usart_send(USART2, num_buf, 10);
     usart_send(USART2, next_line_buf, 2);
     ++num;
-    while (s_ticks - now < 500);
+    while (s_ticks - now < 200);
   }
 }
 
