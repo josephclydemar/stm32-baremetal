@@ -5,7 +5,6 @@
 _Static_assert(sizeof(uint8_t) == 1, "Unexpected `uint8_t` size");
 _Static_assert(sizeof(uint16_t) == 2, "Unexpected `uint16_t` size");
 _Static_assert(sizeof(uint32_t) == 4, "Unexpected `uint32_t` size");
-_Static_assert(sizeof(4ul) == 4, "Unexpected `uint32_t` size");
 
 
 /* CORE PERIPHERALS */
@@ -21,11 +20,17 @@ typedef struct {
 #define NVIC_START      0xe000e100    /* NVIC address */
 typedef struct {
   volatile uint32_t iser[8];
+  volatile uint32_t _reserved1[24]; // (4 * 24) = 96 bytes
   volatile uint32_t icer[8];
+  volatile uint32_t _reserved2[24]; // (4 * 24) = 96 bytes
   volatile uint32_t ispr[8];
+  volatile uint32_t _reserved3[24]; // (4 * 24) = 96 bytes
   volatile uint32_t icpr[8];
+  volatile uint32_t _reserved4[24]; // (4 * 24) = 96 bytes
   volatile uint32_t iabr[8];
+  volatile uint32_t _reserved5[56]; // (4 * 56) = 224 bytes
   volatile uint32_t ipr[60];
+  volatile uint32_t _reserved6[644]; // (4 * 644) = 2576 bytes
   volatile uint32_t stir;
 } nvic_t;
 
@@ -160,8 +165,7 @@ typedef struct {
 } usart_t;
 
 
-
-int main(void);
+void nvic_enable_irq(nvic_t *nvic, uint32_t irq_pos, uint32_t irq_priority);
 
 #endif // STM32F411XX_H_
 
