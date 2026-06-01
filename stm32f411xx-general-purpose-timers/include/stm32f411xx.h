@@ -1,11 +1,11 @@
 #ifndef STM32F411XX_H_
 #define STM32F411XX_H_
 
+#include <stdbool.h>
 #include <stdint.h>
 _Static_assert(sizeof(uint8_t) == 1, "Unexpected `uint8_t` size");
 _Static_assert(sizeof(uint16_t) == 2, "Unexpected `uint16_t` size");
 _Static_assert(sizeof(uint32_t) == 4, "Unexpected `uint32_t` size");
-_Static_assert(sizeof(4ul) == 4, "Unexpected `uint32_t` size");
 
 
 /* CORE PERIPHERALS */
@@ -17,15 +17,20 @@ typedef struct {
   volatile uint32_t calib; /* +0x0c */
 } stk_t;
 
-
 #define NVIC_ADDR      0xe000e100    /* NVIC address */
 typedef struct {
   volatile uint32_t iser[8];
+  volatile uint32_t _reserved1[24]; // (4 * 24) = 96 bytes
   volatile uint32_t icer[8];
+  volatile uint32_t _reserved2[24]; // (4 * 24) = 96 bytes
   volatile uint32_t ispr[8];
+  volatile uint32_t _reserved3[24]; // (4 * 24) = 96 bytes
   volatile uint32_t icpr[8];
+  volatile uint32_t _reserved4[24]; // (4 * 24) = 96 bytes
   volatile uint32_t iabr[8];
+  volatile uint32_t _reserved5[56]; // (4 * 56) = 224 bytes
   volatile uint32_t ipr[60];
+  volatile uint32_t _reserved6[644]; // (4 * 644) = 2576 bytes
   volatile uint32_t stir;
 } nvic_t;
 
@@ -66,13 +71,11 @@ typedef struct {
   volatile uint32_t dckcfgr;     /* +0x8c */
 } rcc_t;
 
-
 #define PWR_ADDR       0x40007000    /* PWR address boundary (0x4000 7000 - 0x4000 73FF) : APB1 */
 typedef struct {
   volatile uint32_t cr;   /* +0x00 */
   volatile uint32_t csr;  /* +0x04 */
 } pwr_t;
-
 
 #define FLASH_INTF_ADDR       0x40023c00    /*  address boundary (0x4002 3C00 - 0x4002 3FFF) : APB1 */
 typedef struct {
@@ -83,7 +86,6 @@ typedef struct {
   volatile uint32_t cr;      /* +0x10 */
   volatile uint32_t optcr;   /* +0x14 */
 } flash_intf_t;
-
 
 #define GPIOA_ADDR        0x40020000  /* GPIOA address boundary (0x4002 0000 - 0x4002 03FF) : AHB1 */
 #define GPIOB_ADDR        0x40020400  /* GPIOB address boundary (0x4002 0400 - 0x4002 07FF) : AHB1 */
@@ -99,7 +101,6 @@ typedef struct {
   volatile uint32_t lckr;
   volatile uint32_t afr[2];
 } gpio_t;
-
 
 #define TIM2_ADDR         0x40000000  /* TIM2 address boundary (0x4000 0000 - 0x4000 03FF) : APB1 */
 #define TIM3_ADDR         0x40000400  /* TIM3 address boundary (0x4000 0400 - 0x4000 07FF) : APB1 */
@@ -126,7 +127,6 @@ typedef struct {
   volatile uint32_t tim_or;    /* +0x50 */
 } gptim_t;
 
-
 #define SYSCFG_ADDR       0x40013800 /* SYSCFG address boundary (0x4001 3800 - 0x4001 3BFF) : APB2 */
 typedef struct {
   volatile uint32_t memrmp;    /* +0x00 */
@@ -135,7 +135,6 @@ typedef struct {
   volatile uint32_t _reserved1[2]; /* +0x18, +0x1c */
   volatile uint32_t cmpcr;     /* +0x20 */
 } syscfg_t;
-
 
 #define EXTI_ADDR         0x40013c00  /* EXTI address boundary (0x4001 3C00 - 0x4001 3FFF) : APB2 */
 typedef struct {
@@ -147,8 +146,20 @@ typedef struct {
   volatile uint32_t pr;     /* +0x14 */
 } exti_t;
 
+#define USART1_ADDR         0x40011000  /* USART1 address boundary (0x4001 1000 - 0x4001 13FF) : APB2 */
+#define USART2_ADDR         0x40004400  /* USART2 address boundary (0x4000 4400 - 0x4000 47FF) : APB1 */
+#define USART6_ADDR         0x40011400  /* USART6 address boundary (0x4001 1400 - 0x4001 17FF) : APB2 */
+typedef struct {
+  volatile uint32_t sr;    /* +0x00 */
+  volatile uint32_t dr;    /* +0x04 */
+  volatile uint32_t brr;   /* +0x08 */
+  volatile uint32_t cr[3]; /* +0x0c, +0x10, +0x14 */
+  volatile uint32_t gtpr;  /* +0x18 */
+} usart_t;
 
-int main(void);
+
+void stk_init(stk_t *systim, uint32_t ticks);
+void nvic_enable_irq(nvic_t *nvic, uint32_t irq_pos, uint8_t irq_priority);
 
 #endif // STM32F411XX_H_
 

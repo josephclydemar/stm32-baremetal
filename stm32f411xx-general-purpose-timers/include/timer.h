@@ -21,12 +21,18 @@ typedef struct {
 typedef struct {
   volatile uint32_t psc;
   volatile uint32_t arr;
+} tim_base_cfg_t;
+
+typedef struct {
   volatile uint32_t ccr;
   volatile tim_ch_t ch;
-} tim_pwm_cfg_t;
+} tim_pwm_ch_cfg_t;
 
-void tim_pwm_init(tim_t t, tim_pwm_cfg_t cfg);
-void tim_pwm_write(tim_t t, tim_ch_t ch, uint32_t duty_cycle);
+void timer_init(tim_t t, tim_base_cfg_t cfg);
+void timer_start(tim_t t);
+void timer_pwm_channel_init(tim_t t, tim_pwm_ch_cfg_t cfg);
+void timer_pwm_write(tim_t t, tim_ch_t ch, uint32_t duty_cycle);
+void timer_input_capture_channel_init(tim_t t, tim_ch_t ch);
 
 #endif // TIMER_H_
 

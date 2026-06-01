@@ -76,16 +76,15 @@
 
 
 
-/* GPIO */
 #define RCC_GPIOA      (rcc_periph_t){ .reg = &(((volatile rcc_t *)RCC_ADDR)->ahbenr[0]), .mask = RCC_AHB1ENR_GPIOAEN }
 #define RCC_GPIOB      (rcc_periph_t){ .reg = &(((volatile rcc_t *)RCC_ADDR)->ahbenr[0]), .mask = RCC_AHB1ENR_GPIOBEN }
-
-/* Timer */
 #define RCC_TIM2       (rcc_periph_t){ .reg = &(((volatile rcc_t *)RCC_ADDR)->apbenr[0]), .mask = RCC_APB1ENR_TIM2EN }
 #define RCC_TIM3       (rcc_periph_t){ .reg = &(((volatile rcc_t *)RCC_ADDR)->apbenr[0]), .mask = RCC_APB1ENR_TIM3EN }
 #define RCC_TIM4       (rcc_periph_t){ .reg = &(((volatile rcc_t *)RCC_ADDR)->apbenr[0]), .mask = RCC_APB1ENR_TIM4EN }
 #define RCC_TIM5       (rcc_periph_t){ .reg = &(((volatile rcc_t *)RCC_ADDR)->apbenr[0]), .mask = RCC_APB1ENR_TIM5EN }
-
+#define RCC_USART1     (rcc_periph_t){ .reg = &(((volatile rcc_t *)RCC_ADDR)->apbenr[1]), .mask = (1u << 4) }
+#define RCC_USART2     (rcc_periph_t){ .reg = &(((volatile rcc_t *)RCC_ADDR)->apbenr[0]), .mask = (1u << 17) }
+#define RCC_USART6     (rcc_periph_t){ .reg = &(((volatile rcc_t *)RCC_ADDR)->apbenr[1]), .mask = (1u << 5) }
 #define RCC_SYSCFG    (rcc_periph_t){ .reg = &(((volatile rcc_t *)RCC_ADDR)->apbenr[1]), .mask = RCC_APB2ENR_SYSCFGEN }
 
 

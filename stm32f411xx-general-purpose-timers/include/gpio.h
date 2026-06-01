@@ -2,9 +2,14 @@
 #define GPIO_H_
 #include "stm32f411xx.h"
 
+#define PA2 (volatile gpio_pin_t){ .port = ((volatile gpio_t *)GPIOA_ADDR), .pin = 2 }
+#define PA3 (volatile gpio_pin_t){ .port = ((volatile gpio_t *)GPIOA_ADDR), .pin = 3 }
+#define PA4 (volatile gpio_pin_t){ .port = ((volatile gpio_t *)GPIOA_ADDR), .pin = 4 }
 #define PA5 (volatile gpio_pin_t){ .port = ((volatile gpio_t *)GPIOA_ADDR), .pin = 5 }
 #define PA6 (volatile gpio_pin_t){ .port = ((volatile gpio_t *)GPIOA_ADDR), .pin = 6 }
 #define PA7 (volatile gpio_pin_t){ .port = ((volatile gpio_t *)GPIOA_ADDR), .pin = 7 }
+#define PB1 (volatile gpio_pin_t){ .port = ((volatile gpio_t *)GPIOB_ADDR), .pin = 1 }
+#define PB2 (volatile gpio_pin_t){ .port = ((volatile gpio_t *)GPIOB_ADDR), .pin = 2 }
 #define PB3 (volatile gpio_pin_t){ .port = ((volatile gpio_t *)GPIOB_ADDR), .pin = 3 }
 #define PB5 (volatile gpio_pin_t){ .port = ((volatile gpio_t *)GPIOB_ADDR), .pin = 5 }
 #define PB6 (volatile gpio_pin_t){ .port = ((volatile gpio_t *)GPIOB_ADDR), .pin = 6 }
