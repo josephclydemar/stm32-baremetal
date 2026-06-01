@@ -2,7 +2,9 @@
 #define USART_H_
 #include "stm32f411xx.h"
 
-#define USART2          (usart_t *)USART2_START
+#define USART2          (usart_dev_t){ .usart = (usart_t *)USART2_START, .irq_pos = 38, .irq_priority = 45 }
+#define USART1          (usart_dev_t){ .usart = (usart_t *)USART1_START, .irq_pos = 37, .irq_priority = 44 }
+#define USART6          (usart_dev_t){ .usart = (usart_t *)USART6_START, .irq_pos = 71, .irq_priority = 78 }
 
 /* status register */
 #define USART_SR_RXNE        (1ul << 5)
@@ -22,12 +24,18 @@
 
 
 typedef struct {
+  usart_t *usart;
+  uint32_t irq_pos;
+  char irq_priority;
+} usart_dev_t;
+
+typedef struct {
   uint32_t mantissa;
   uint32_t fraction;
 } usart_brr_t;
 
-void usart_init(usart_t *usart, usart_brr_t brr_cfg);
-void usart_send(usart_t *usart, char *buff, uint32_t buff_len);
+void usart_init(usart_dev_t usart_dev, usart_brr_t brr_cfg);
+void usart_send(usart_dev_t usart_dev, char *buff, uint32_t buff_len);
 
 #endif // USART_H_
 

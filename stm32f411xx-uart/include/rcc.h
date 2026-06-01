@@ -18,8 +18,8 @@
 #define RCC_SYSCFG     (rcc_periph_t){ .reg = &(((volatile rcc_t *)RCC_START)->apbenr[1]), .mask = (1u << 14) }
 
 typedef struct {
-    volatile uint32_t *reg;  // pointer to enable register
-    volatile uint32_t mask;            // bit mask
+  volatile uint32_t *reg;  // pointer to enable register
+  volatile uint32_t mask;            // bit mask
 } rcc_periph_t;
 
 void rcc_pll_config(void);

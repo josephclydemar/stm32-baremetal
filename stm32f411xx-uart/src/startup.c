@@ -11,6 +11,7 @@ void svc_handler(void)            __attribute__((weak, alias("default_handler"))
 void debugmon_handler(void)       __attribute__((weak, alias("default_handler")));
 void pendsv_handler(void)         __attribute__((weak, alias("default_handler")));
 void stk_handler(void)            __attribute__((weak, alias("default_handler")));
+void usart2_handler(void)         __attribute__((weak, alias("default_handler")));
 
 
 void default_handler(void)
@@ -41,8 +42,8 @@ void reset_handler(void)
   while (1);
 }
 
-void usart2_handler(void) {
-  usart_t *usart = USART2;
+void usart6_handler(void) {
+  usart_t *usart = (usart_t *)USART6_START;
   char buf[12];
   buf[0] = '[';
   buf[1] = 'h';
@@ -56,6 +57,6 @@ void usart2_handler(void) {
   buf[9] = ']';
   buf[10] = '\r';
   buf[11] = '\n';
-  usart_send(usart, buf, 12);
+  usart_send(USART6, buf, 12);
 }
 

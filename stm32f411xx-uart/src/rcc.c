@@ -23,7 +23,8 @@ void rcc_pll_config(void)
   rcc->cfgr &= ~(7ul << 10); /* Clear PPRE1 */
   rcc->cfgr |= (5ul << 10);  /* Set PPRE1 (APB1 Prescaler) to 4 */
   rcc->cfgr &= ~(7ul << 13); /* Clear PPRE2 */
-  rcc->cfgr |= (4ul << 13);  /* Set PPRE2 (APB2 Prescaler) to 2 */
+  // rcc->cfgr |= (4ul << 13);  /* Set PPRE2 (APB2 Prescaler) to 2 */
+  rcc->cfgr |= (6ul << 13);  /* Set PPRE2 (APB2 Prescaler) to 8 */
 
   /* PLL configuration */
   rcc->pllcfgr |= (1ul << 22); /* Set PLLSRC bit as 0b1(HSE) */

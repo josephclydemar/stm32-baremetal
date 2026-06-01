@@ -16,6 +16,7 @@ void debugmon_handler(void);
 void pendsv_handler(void);
 void stk_handler(void);
 void usart2_handler(void);
+void usart6_handler(void);
 
 /* vector table */
 __attribute__((section(".isr_vector")))
@@ -74,5 +75,40 @@ void (*const vector_table[])(void) = {
   default_handler, //  (36): SPI2
   default_handler, //  (37): USART1
   usart2_handler,  //  (38): USART2
+  default_handler, //  (39): 
+  default_handler, //  (40): 
+  default_handler, //  (41): 
+  default_handler, //  (42): 
+  default_handler, //  (43): 
+  default_handler, //  (44): 
+  default_handler, //  (45): 
+  default_handler, //  (46): 
+  default_handler, //  (47): 
+  default_handler, //  (48): 
+  default_handler, //  (49): 
+  default_handler, //  (50): 
+  default_handler, //  (51): 
+  default_handler, //  (52): 
+  default_handler, //  (53): 
+  default_handler, //  (54): 
+  default_handler, //  (55): 
+  default_handler, //  (56): 
+  default_handler, //  (57): 
+  default_handler, //  (58): 
+  default_handler, //  (59): 
+  default_handler, //  (60): 
+  default_handler, //  (61): 
+  default_handler, //  (62): 
+  default_handler, //  (63): 
+  default_handler, //  (64): 
+  default_handler, //  (65): 
+  default_handler, //  (66): 
+  default_handler, //  (67): 
+  default_handler, //  (68): 
+  default_handler, //  (69): 
+  default_handler, //  (70): 
+  usart6_handler, //  (71): USART6
+  default_handler, //  (72): 
+  default_handler, //  (73): 
 };
 

@@ -8,6 +8,8 @@
 #define PA5 (volatile gpio_pin_t){ .port = ((volatile gpio_t *)GPIOA_START), .pin = 5 }
 #define PA6 (volatile gpio_pin_t){ .port = ((volatile gpio_t *)GPIOA_START), .pin = 6 }
 #define PA7 (volatile gpio_pin_t){ .port = ((volatile gpio_t *)GPIOA_START), .pin = 7 }
+#define PA11 (volatile gpio_pin_t){ .port = ((volatile gpio_t *)GPIOA_START), .pin = 11 }
+#define PA12 (volatile gpio_pin_t){ .port = ((volatile gpio_t *)GPIOA_START), .pin = 12 }
 
 #define PB3 (volatile gpio_pin_t){ .port = ((volatile gpio_t *)GPIOB_START), .pin = 3 }
 #define PB4 (volatile gpio_pin_t){ .port = ((volatile gpio_t *)GPIOB_START), .pin = 4 }
