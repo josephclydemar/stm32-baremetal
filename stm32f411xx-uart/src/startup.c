@@ -44,16 +44,16 @@ void reset_handler(void)
 
 void usart6_handler(void) {
   usart_t *usart = (usart_t *)USART6_START;
-  char buf[12];
+  uint8_t buf[12];
   buf[0] = '[';
-  buf[1] = 'h';
+  buf[1] = 'H';
   buf[2] = 'e';
   buf[3] = 'l';
   buf[4] = 'l';
   buf[5] = 'o';
   buf[6] = ':';
   buf[7] = ' ';
-  buf[8] = (char)(usart->dr & 0xff);
+  buf[8] = (uint8_t)(usart->dr & 0xff);
   buf[9] = ']';
   buf[10] = '\r';
   buf[11] = '\n';

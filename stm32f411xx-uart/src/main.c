@@ -39,7 +39,7 @@ int main(void)
 
   uint32_t now;
   uint32_t num = 0;
-  char num_buf[12], next_line_buf[2] = {'\r', '\n'};
+  uint8_t num_buf[12], next_line_buf[2] = {'\r', '\n'};
   num_buf[0] = '-';
   num_buf[1] = '>';
   num_buf[2] = '0';

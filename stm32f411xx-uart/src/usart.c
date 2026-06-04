@@ -16,7 +16,7 @@ void usart_init(usart_dev_t usart_dev, usart_brr_t brr_cfg)
   usart_dev.usart->cr[0] |= USART_CR1_UE; // Set UE (Enable USART)
 }
 
-void usart_send(usart_dev_t usart_dev, char *buff, uint32_t buff_len)
+void usart_send(usart_dev_t usart_dev, const uint8_t *buff, const uint32_t buff_len)
 {
   for (uint32_t i = 0; i < buff_len; ++i) {
     while (!(usart_dev.usart->sr & USART_SR_TXE));

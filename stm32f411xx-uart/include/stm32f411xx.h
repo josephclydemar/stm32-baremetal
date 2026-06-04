@@ -159,7 +159,7 @@ typedef struct {
 
 
 void stk_init(stk_t *systim, uint32_t ticks);
-void nvic_enable_irq(nvic_t *nvic, uint32_t irq_pos, char irq_priority);
+void nvic_enable_irq(nvic_t *nvic, uint32_t irq_pos, uint8_t irq_priority);
 
 #endif // STM32F411XX_H_
 

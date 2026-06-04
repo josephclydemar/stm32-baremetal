@@ -26,7 +26,7 @@
 typedef struct {
   usart_t *usart;
   uint32_t irq_pos;
-  char irq_priority;
+  uint8_t irq_priority;
 } usart_dev_t;
 
 typedef struct {
@@ -35,7 +35,7 @@ typedef struct {
 } usart_brr_t;
 
 void usart_init(usart_dev_t usart_dev, usart_brr_t brr_cfg);
-void usart_send(usart_dev_t usart_dev, char *buff, uint32_t buff_len);
+void usart_send(usart_dev_t usart_dev, const uint8_t *buff, const uint32_t buff_len);
 
 #endif // USART_H_
 
