@@ -1,7 +1,7 @@
-#ifndef TIMER_H_
-#define TIMER_H_
+#ifndef SYSINIT_H_
+#define SYSINIT_H_
 
 void sysinit(void);
 
-#endif // TIMER_H_
+#endif // SYSINIT_H_
 
